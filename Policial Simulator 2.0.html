@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Policial Simulator POW POW 2.0</title>
+    <style>
+        body{
+            background: rgb(230, 175, 139);
+            color : rgb(56, 33, 33);
+            text-align: center;
+        }
+        div#CaixaPrincipal{
+            
+            background: white;
+            width: 600px;
+            height: 300px;
+            margin : 0 auto 0 auto;
+            font : normal 15pt Arial;
+            color: rgb(71, 53, 53);
+            
+        }
+        div#Final{
+            
+            background: rgb(230, 175, 139);
+            width: 600px;
+            height: 250px;
+            margin : 0 auto 0 auto;
+            font : normal 20pt Arial;
+            color: rgb(71, 53, 53);
+            
+        }
+        input{
+            width: 200px;
+            height: 100px;
+            color: rgb(71, 53, 53);
+            left : 10%;
+        }
+       
+    </style>
+</head>
+<body>
+    <h1>Policial Simulator 2.0</h1>
+    
+    <div id="CaixaPrincipal" onclick="Proximo()">
+            Bem Vindo ao Polícia Simulator um jogo onde a história muda conforme suas decisões, escolha com cuidado! <p>Dica : Use números para escolher as decisões.  
+            <p><br>Para continuar clique na caixa.
+        </div>
+    
+        
+        <input  id = "Primeiro" type="button" value=" Sem Escolhas " onclick = "A()">
+        <input  id = "Segundo" type="button" value="Sem Escolhas" onclick = "B()">
+    <div id="Final">
+
+    </div>
+
+    
+    
+    <script>
+        var texto = 1;
+        var Mensagem;
+        var Fim = 'Nada';
+        var Primeiro;
+        var Segundo;
+        var Passo = 0;
+        var atirou = true;
+        var IrF = false;
+
+        function Proximo(){
+            if(texto == 1)
+            {
+                Mensagem = "É um gato ! <br>Não, não é um gato é  ladrão que roubou um gato!";
+                window.document.getElementById("CaixaPrincipal").innerHTML = Mensagem;
+
+            }
+            if(texto == 2)
+            {
+                Mensagem = "Ele se assusta com sua chegada e corre.<br>O gato vai para a direita o ladrão vai para a esquerda. <br><br>";
+                window.document.getElementById("CaixaPrincipal").innerHTML = Mensagem;
+                window.document.getElementById('Primeiro').value = 'Seguir o Gato';
+                window.document.getElementById('Segundo').value = 'Seguir Ladrão';
+                Passo = 1;
+
+            }
+            
+            if(texto == 4)
+            {
+                Mensagem = "Você corre atrás do ladrão de gatos, até que se aproxima de um carro.<br><br> RUUUM !!<br><br> O carro sai a toda velocidade, mas como ele pode ser tão rápido?";
+                window.document.getElementById("CaixaPrincipal").innerHTML = Mensagem;
+                window.document.getElementById('Primeiro').value = 'Sem Escolhas';
+                window.document.getElementById('Segundo').value = 'Sem Escolhas';
+            }
+            if(texto == 5)
+            {
+                Mensagem = "E agora? me parece que ele vai fugir!<br><br> ";
+                window.document.getElementById("CaixaPrincipal").innerHTML = Mensagem;
+                window.document.getElementById('Primeiro').value = 'Atirar no Pneu';
+                window.document.getElementById('Segundo').value = 'Ir atrás do carro correndo';
+                Passo = 2;
+   
+            }
+            if(texto == 8)
+            {
+                Mensagem = "<br>Não, não é um gato, é uma rica senhora com um casaco cor pele de gato... <Br>Era, na verdade.<br>Sorte na mira, azar na vida.<br>O caso do policial que matou a fundadora da cidade se espalha e você perde o emprego.<br>Você passa a morar na ponte e vê...<br>Sim, o gato que você não ajudou com um peixe saboroso na boca...<br>Aquilo poderia matar a sua fome.";
+                window.document.getElementById("CaixaPrincipal").innerHTML = Mensagem;
+            }
+            if(texto == 9)
+            {
+                Mensagem = "<br>Porém, ele nega. <br><br>Sua fome morre mas você morre também, talvez deveria ter ajudado o pobre bichano.";
+                window.document.getElementById("CaixaPrincipal").innerHTML = Mensagem;
+            }
+
+            if(texto == 10)
+            {
+                Fim = 'Fome';
+                Final();
+            }
+            if(texto == 12)
+            {
+                Mensagem = "Não, não é o ladrão é o gato.<br>Ele corre furioso e vingativo para cima do ladrão e você ...";
+                window.document.getElementById("CaixaPrincipal").innerHTML = Mensagem;
+                window.document.getElementById('Primeiro').value = 'Corre Junto';
+                window.document.getElementById('Segundo').value = 'Atira';
+                Passo = 3;
+            }
+            if(texto == 15)
+            {
+                Mensagem = "O caso se espalha e você se torna muito conhecido e ganha uma promoção pela prisão do popular e perigoso bandido.<br><br>Mas a velha senhora dona do gato perdeu seu único amigo.<br><br>Agora ela vive triste e sozinha em sua pequena casa, em seu pequeno bairro, com sua pequena vida.<br><br> Por quanto tempo?<br><br> Sem seu MELHOR amigo, ninguém mais sabe.";
+                window.document.getElementById("CaixaPrincipal").innerHTML = Mensagem;
+                
+                
+            }
+            if(texto == 18)
+            {
+                Mensagem = "A pressão sobre o ladrão é grande.<br>Seu ato de heroismo invade as pessoas próximas e todas disparam atrás do ladrão.<br><br>Mas agora.. Você o perdeu de vista !!";
+                window.document.getElementById("CaixaPrincipal").innerHTML = Mensagem;
+                window.document.getElementById('Primeiro').value = 'Atirar para cima';
+                window.document.getElementById('Segundo').value = 'Seguir o gato';
+                Passo = 4;
+            }
+            if(texto == 20)
+            {
+                Mensagem = "Os jogos olímpicos retornam a suas veias e você dispara em direção a porta.";
+                window.document.getElementById("CaixaPrincipal").innerHTML = Mensagem;
+                
+            }
+            if(texto == 21)
+            {
+                Mensagem = "Bah, está trancada.... <br> Mas você pode atirar e entrar.";
+                window.document.getElementById("CaixaPrincipal").innerHTML = Mensagem;
+                window.document.getElementById('Primeiro').value = 'Atirar';
+                window.document.getElementById('Segundo').value = 'Procurar outra entrada';
+                Passo = 5;
+                
+            }
+            if(texto == 23)
+            {
+                Mensagem = "A porta se abre e você entra, é uma longa escadaria que te leva para cima.<br>Você vai parar no topo do prédio, sim, era um prédio.<br>O ladrão esta de costas, distraído, pensa que se safou.<br><br>Hora de acabar com isso!";
+                window.document.getElementById("CaixaPrincipal").innerHTML = Mensagem; 
+                window.document.getElementById('Primeiro').value = 'Atirar';
+                window.document.getElementById('Segundo').value = 'Pular nele';
+                Passo = 6;
+            }
+            if(texto == 25)
+            {
+                Mensagem = "É realmente um gato ! <br> E... está voando! <br> Voando em direção ao ladrão, é um belo salto.<br>O ladrão não esperava por essa! <br>Ele cai sem equilibrio, mas não do prédio.<br>"
+                window.document.getElementById("CaixaPrincipal").innerHTML = Mensagem; 
+            }
+            if(texto == 26)
+            {
+                Mensagem = "A notícia se espalha, você prendeu o ladrão e levou o gato para a velha senhora.<br>O caso do gato que deteve um ladrão.<br> Essa é a notícia e ela não envolve você. <br> Você continua com seu trabalho em seu mesmo cargo, sem reconhecimento nenhum exceto o da grata velha senhora.<br>Porém você sabe, que em uma pequena casa dentro de um pequeno bairro, há uma pequena vida, que está feliz com seu GRANDE amigo.<br>De qualquer forma como você prefere ser um corredor, não se importa com a falta de reconhecimento."
+                window.document.getElementById("CaixaPrincipal").innerHTML = Mensagem; 
+            }
+            if(texto == 27)
+            {
+                Fim = 'felicidade';
+                Final();
+            }
+            if(texto == 29)
+            {
+                Fim = 'todos morrem';
+                Final();
+            }
+
+            if(texto == 31)
+            {
+                Mensagem = 'Você entra, é uma longa escadaria que te leva para cima.<br>Você vai parar no topo do prédio, sim, era um prédio.<br>O ladrão esta de costas, distraído, pensa que se safou.<br>Hora de acabar com isso! E lhe resta apenas... <br>Uma bala!<br> Que Sorte! Ainda bem que você não a gastou.'
+                window.document.getElementById("CaixaPrincipal").innerHTML = Mensagem;
+                window.document.getElementById('Primeiro').value = 'Atirar';
+                window.document.getElementById('Segundo').value = 'Pular nele'; 
+                Passo = 7;
+            }
+            if(texto == 33)
+            {
+                Mensagem = "Policial detém ladrão e vira heroi da cidade. Gato morre acidentalmente.<br>Para a cidade : Um grande heroi.<br> Para a velha senhora : Nada, pois a dor da perda e o choque ... Aquela cena foi tão triste... <br>Ela não resistiu."
+                window.document.getElementById("CaixaPrincipal").innerHTML = Mensagem;
+            }
+            if(texto == 34)
+            {
+                Fim = 'velha solitaria';
+                Final();
+            }
+            if(texto == 36)
+            {
+                Mensagem = "O gato não tem piedade, corre em direção do ladrão. <br>Você precisa fazer alguma coisa!";
+                window.document.getElementById("CaixaPrincipal").innerHTML = Mensagem;
+                window.document.getElementById('Primeiro').value = 'Atirar';
+                window.document.getElementById('Segundo').value = 'Pular nele'; 
+                Passo = 8;
+                
+            }
+          
+            if(texto == 16)
+            {
+                Fim = 'velha solitaria';
+                Final();
+            }
+
+
+
+            if(texto != 36 && texto != 34 && texto != 31  && texto != 29 && texto != 27 && texto != 3 && texto != 6 && texto != 0 && texto !=10 && texto != 12 && texto !=16 && texto !=18 && texto != 21 && texto != 23)
+            {
+                texto++;
+            }
+                   
+            }
+
+            function A(){
+                if(IrF == true)
+                {
+                    ReiniciarF();
+                }
+                if(texto == 31 && Passo == 7 || texto == 36 && Passo == 8)
+                {
+                    Mensagem = "POW! A bala parece se mover em camera lenta, mas não só ela.<br>Um gato surge lentamente... MIIAAAAU.<br>O Tiro acerta os dois, e juntos eles voam... Para baixo. <br>PAF!<br>Você desce rápido as escadas e a cena esta feita, juntamente com a notícia :"
+                    window.document.getElementById("CaixaPrincipal").innerHTML = Mensagem;
+                    window.document.getElementById('Primeiro').value = 'Sem Escolhas';
+                    window.document.getElementById('Segundo').value = 'Sem Escolhas';
+                    texto = 32;
+                    Proximo();
+                }
+                if(texto == 3 && Passo == 1)
+                {
+                    Fim = 'Fome';
+                    Mensagem = "Você corre atrás do gato e salva a vida do bichano, levando-o devolta feliz a sua dona.<br><br> Apesar de sua dona ficar feliz todos acham que você é um covarde, você perde o emprego e vai morar debaixo de uma ponte.<br> <br>O gato que você ajudou passa em sua frente com um pedaço de peixe na boca, ele não te dá e você morre de fome.";
+                    window.document.getElementById("CaixaPrincipal").innerHTML = Mensagem;
+                    window.document.getElementById('Primeiro').value = 'Sem Escolhas';
+                    window.document.getElementById('Segundo').value = 'Sem Escolhas';
+                    Final();
+                }
+                if(texto == 6 && Passo == 2)
+                {
+                    
+                    Mensagem = "<br>Perfeito!<br> O tiro acerta o pneu e o carro começa a derrapar até bater em outro veículo em sua frente.<br>POOL!<br> Acho que ele não estava usando cintos!<br> Um corpo voa a todo vapor pelo vidro, mas espera ... Não é o ladrão.<br> É UM GATO!";
+                    window.document.getElementById("CaixaPrincipal").innerHTML = Mensagem;
+                    window.document.getElementById('Primeiro').value = 'Sem Escolhas';
+                    window.document.getElementById('Segundo').value = 'Sem Escolhas';
+                    texto = 7;
+                    Proximo();
+                    
+
+                }
+                if(texto == 12 && Passo == 3 )
+                {
+                    Mensagem = "<br>Você deveria ser atleta e não policial.<br><br>Novamente dispara em uma nova perseguição.<br>";
+                    window.document.getElementById("CaixaPrincipal").innerHTML = Mensagem;
+                    window.document.getElementById('Primeiro').value = 'Sem Escolhas';
+                    window.document.getElementById('Segundo').value = 'Sem Escolhas';
+                    texto = 17;
+                    Proximo();
+                }
+                if(texto == 18 && Passo ==4)
+                {
+                    Mensagem = "POOL!<br> Silêncio absoluto, exceto por uma porta que acaba de se abrir."
+                    window.document.getElementById("CaixaPrincipal").innerHTML = Mensagem;
+                    window.document.getElementById('Primeiro').value = 'Sem Escolhas';
+                    window.document.getElementById('Segundo').value = 'Sem Escolhas';
+                    texto = 19;
+                    Proximo();
+                }
+                if(texto == 21 && Passo == 5)
+                {
+                    Mensagem = "E novamente POOOW! <br> "
+                    window.document.getElementById("CaixaPrincipal").innerHTML = Mensagem;
+                    window.document.getElementById('Primeiro').value = 'Sem Escolhas';
+                    window.document.getElementById('Segundo').value = 'Sem Escolhas';
+                    atirou = true;
+                    texto = 22;
+                    Proximo();
+                
+                }
+                if(texto == 23 && Passo == 6 )
+                {
+                    if(atirou == true)
+                    {
+                        Mensagem = "TIC. TIC. TIC. Você não tem balas!<br>Gastou sua última para entrar no prédio.<br> Está tudo acabado ... Mas espere, É UM GATO!"
+                        window.document.getElementById("CaixaPrincipal").innerHTML = Mensagem;
+                        window.document.getElementById('Primeiro').value = 'Sem Escolhas';
+                        window.document.getElementById('Segundo').value = 'Sem Escolhas';
+                        texto = 24;
+                        Proximo();
+                    }
+                    if(atirou == false)
+                    {
+                        Mensagem = "TIC. TIC. TIC. Você não tem balas!<br>Gastou sua última para entrar no prédio.<br> Está tudo acabado ... Mas espere, É UM GATO!"
+                        window.document.getElementById("CaixaPrincipal").innerHTML = Mensagem;
+                        window.document.getElementById('Primeiro').value = 'Sem Escolhas';
+                        window.document.getElementById('Segundo').value = 'Sem Escolhas';
+                        texto = 24;
+                        Proximo();
+                    }
+                }
+               
+            }
+            function B(){
+                if(IrF == true)
+                {
+                    ReiniciarF();
+                }
+                if(Passo == 4 && texto == 18)
+                {
+                    Mensagem = "Você segue o bichano até uma porta, ele entra primeiro e você logo atrás.<br>A escadarias te levam para o topo do prédio em que entrou.<br> Você segue devagar, e ve o ladrão distraido, acha que se safou.<br>";
+                    window.document.getElementById('Primeiro').value = 'Sem Escolhas';
+                    window.document.getElementById('Segundo').value = 'Sem Escolhas';
+                    window.document.getElementById("CaixaPrincipal").innerHTML = Mensagem;
+                    texto = 35;
+                    Proximo();
+                }
+                if(texto == 3 && Passo == 1)
+                {
+
+                    window.document.getElementById('Primeiro').value = 'Sem Escolhas';
+                    window.document.getElementById('Segundo').value = 'Sem Escolhas';
+                    texto = 4;
+                    Proximo();
+                }
+                if(texto == 6 && Passo == 2)
+                {
+                    Mensagem = "O Espírito da burrice lhe invade e você decide ir atrás dele correndo.<br>Não tem como competir, o carro é mais rápido que você.<br><br>Mas espere... É o ladrão !";
+                    window.document.getElementById("CaixaPrincipal").innerHTML = Mensagem;
+                    window.document.getElementById('Primeiro').value = 'Sem Escolhas';
+                    window.document.getElementById('Segundo').value = 'Sem Escolhas';
+                    texto = 11;
+                    Proximo();
+                }
+                if(texto == 12 && Passo == 3 )
+                {
+                    Mensagem = "<br>Direto na perna do ... DOS DOIS!<br>O ladrão não consegue mais correr e decide se entregar.<br>O gato também entrega... a sua vida para Deus.";
+                    window.document.getElementById("CaixaPrincipal").innerHTML = Mensagem;
+                    window.document.getElementById('Primeiro').value = 'Sem Escolhas';
+                    window.document.getElementById('Segundo').value = 'Sem Escolhas';
+                    texto = 14;
+                    Proximo();
+                }
+                if(texto == 23 && Passo == 6)
+                {
+                    Mensagem = "Você faz algo que ninguém esperava... Corre denovo.<br>Esta no ar... Chegando perto ... <BR>PAF.<br>O gato pensou o mesmo que você! <br>Os 3 caem do prédio."
+                    window.document.getElementById("CaixaPrincipal").innerHTML = Mensagem;
+                    window.document.getElementById('Primeiro').value = 'Sem Escolhas';
+                    window.document.getElementById('Segundo').value = 'Sem Escolhas';
+                    texto = 28;
+                    Proximo();
+                }
+                if(texto == 21 && Passo == 5)
+                {
+                    Mensagem = "Você olha em volta e encontra uma porta semi aberta.<br>Balas não caem do céu e você resolve economizar."
+                    window.document.getElementById("CaixaPrincipal").innerHTML = Mensagem;
+                    window.document.getElementById('Primeiro').value = 'Sem Escolhas';
+                    window.document.getElementById('Segundo').value = 'Sem Escolhas';
+                    texto = 30;
+                    Proximo();
+                }
+                if(texto == 31 && Passo == 7 || texto == 36 && Passo == 8)
+                {
+                    Mensagem = "Você faz algo que ninguém esperava... Corre denovo.<br>Esta no ar... Chegando perto ... <BR>PAF.<br>O gato pensou o mesmo que você! <br>Os 3 caem do prédio."
+                    window.document.getElementById("CaixaPrincipal").innerHTML = Mensagem;
+                    window.document.getElementById('Primeiro').value = 'Sem Escolhas';
+                    window.document.getElementById('Segundo').value = 'Sem Escolhas';
+                    texto = 28;
+                    Proximo();
+                }
+            }
+           
+            function Final(){
+                window.document.getElementById('Primeiro').value = 'Clique para reiniciar';
+                window.document.getElementById('Segundo').value = 'Clique para reiniciar';
+                if(Fim == 'Fome')
+                {
+                    Mensagem = "<br><br><strong>FINAL TRISTE</strong><br><br> Morreu de fome perante egoismo de um gato.";
+                    window.document.getElementById("Final").innerHTML = Mensagem;
+                    texto = 0;
+                   
+                    
+                 
+                }
+                if(Fim == 'velha solitaria')
+                {
+                    Mensagem = "<br><br><strong>FINAL EGOISTA</strong><br><br> Se tornou famoso e rico as custas do fim de uma linda amizade.";
+                    window.document.getElementById("Final").innerHTML = Mensagem;
+                    texto = 0;
+                   
+                 
+                }
+                if(Fim == 'felicidade')
+                {
+                    Mensagem = "<br><br><strong>FINAL FELIZ</strong><br><br> Apesar de não receber fama, hoje uma senhora vive feliz com seu gato em uma cidade mais segura, e este, foi o seu maior salário.";
+                    window.document.getElementById("Final").innerHTML = Mensagem;
+                    texto = 0;
+                   
+                 
+                }
+                if(Fim == 'todos morrem')
+                {
+                    Mensagem = "<br><br><strong>FINAL TRÁGICO</strong><br><br> Não se sabe ao certo o final, pois você morreu.<br> A única certeza que temos é que a velha senhora sentirá muita falta de seu pequeno bichano.";
+                    window.document.getElementById("Final").innerHTML = Mensagem;
+                    texto = 0;
+                    
+                 
+                }
+                IrF = true;
+            }
+            function ReiniciarF()
+            {
+                texto = 1;
+                Fim = 'Nada';
+                Passo = 0;
+                atirou = true;
+                Mensagem = " Bem Vindo ao Polícia Simulator um jogo onde a história muda conforme suas decisões, escolha com cuidado! <br><br>Dica : Use números para escolher as decisões.<br>Para continuar clique na caixa."
+                document.getElementById("CaixaPrincipal").innerHTML = Mensagem;
+                window.document.getElementById('Primeiro').value = 'Sem Escolhas ';
+                window.document.getElementById('Segundo').value = 'Sem Escolhas';
+                window.document.getElementById("Final").innerHTML = "";
+                IrF = false;
+            }
+                
+    </script>
+
+    
+</body>
+</html>
